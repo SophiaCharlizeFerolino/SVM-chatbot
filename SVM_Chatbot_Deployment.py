@@ -88,7 +88,11 @@ def main():
 
             data['processed_text'] = data['text'].apply(preprocess_text)
 
-            loaded_model = joblib.load('svm_model.pkl')
+            try:
+                loaded_content = joblib.load('svm_model.pkl')
+                print(loaded_content)
+            except Exception as e:
+                print(f"Error loading the model: {e}")
 
             bot_response, similarities = get_response(session_state.user_input, data, loaded_model)
 
