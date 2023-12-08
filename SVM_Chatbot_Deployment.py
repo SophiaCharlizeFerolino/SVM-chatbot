@@ -19,7 +19,7 @@ nltk.download('stopwords')
 
 class SessionState:
     def __init__(self, **kwargs):
-        for key, val in kwargs.items():                                                                                                                                                                                                                                                                                                                                                         
+        for key, val in kwargs.items():
             setattr(self, key, val)
 
 def preprocess_text(text):
@@ -93,6 +93,7 @@ def main():
                 print(loaded_content)
             except Exception as e:
                 print(f"Error loading the model: {e}")
+                raise  # Raise the exception to stop the script
 
             bot_response, similarities = get_response(session_state.user_input, data, loaded_content)
 
