@@ -94,7 +94,7 @@ def main():
             except Exception as e:
                 print(f"Error loading the model: {e}")
 
-            bot_response, similarities = get_response(session_state.user_input, data, loaded_model)
+            bot_response, similarities = get_response(session_state.user_input, data, loaded_content)
 
             # Initialize chat_history as an empty list if it doesn't exist in st.session_state
             st.session_state.chat_history = st.session_state.get('chat_history', [])
