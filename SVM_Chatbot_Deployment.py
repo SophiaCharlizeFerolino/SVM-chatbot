@@ -41,7 +41,7 @@ def get_response(user_message, data, loaded_model):
     if similarities.max() >= 0.1:
         bot_response = reply_data['responses']
     else:
-        st.warning("There is no information about the question. Please reiterate the question, thank you very much!")
+        st.warning("I currently do not possess the information needed to address your question. To assist you more effectively, might I kindly request you to consider rephrasing your question or add additional details?  This will enable me to better understand your query and offer more accurate assistance.")
 
     return bot_response, similarities
 
