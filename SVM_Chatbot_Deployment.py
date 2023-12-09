@@ -38,10 +38,13 @@ def get_response(user_message, data, loaded_model):
     )
     reply_data = data.loc[data['label'] == user_label].iloc[0]
 
+    bot_response = ""  # Set a default value
+
     if similarities.max() >= 0.1:
         bot_response = reply_data['responses']
     else:
-        st.warning("I currently do not possess the information needed to address your question. To assist you more effectively, might I kindly request you to consider rephrasing your question or add additional details?  This will enable me to better understand your query and offer more accurate assistance.")
+        # Instead of st.warning, set a value to bot_response
+        bot_response = "There is no information about the question. Please reiterate the question, thank you very much!"
 
     return bot_response, similarities
 
