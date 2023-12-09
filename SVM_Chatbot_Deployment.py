@@ -44,7 +44,7 @@ def get_response(user_message, data, loaded_model):
         bot_response = reply_data['responses']
     else:
         # Instead of st.warning, set a value to bot_response
-        bot_response = "There is no information about the question. Please reiterate the question, thank you very much!"
+        bot_response = "I currently do not possess the information needed to address your question. To assist you more effectively, might I kindly request you to consider rephrasing your question or add additional details?  This will enable me to better understand your query and offer more accurate assistance."
 
     return bot_response, similarities
 
