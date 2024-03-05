@@ -73,8 +73,8 @@ def main():
     st.header("Chat with Animo! :robot_face:")
     st.caption("Ask anything about The Conduct of Blended Learning and The Sections of the Student Handbook :books:")
 
-    session_state.user_input = st.text_input(label="Type your question here:", value=session_state.user_input, label_visibility="collapsed", placeholder="Type here")
-    submit_button = st.button("Send")
+    submit_button = st.chat_input("Type here", key="user_input")
+    
 
     if submit_button:
         with st.spinner("Processing"):
@@ -98,14 +98,14 @@ def main():
                 print(f"Error loading the model: {e}")
                 raise  # Raise the exception to stop the script
 
-            bot_response, similarities = get_response(session_state.user_input, data, loaded_content)
+            bot_response, similarities = get_response(submit_button, data, loaded_content)
 
             # Initialize chat_history as an empty list if it doesn't exist in st.session_state
             st.session_state.chat_history = st.session_state.get('chat_history', [])
 
             if bot_response:
                 # Add user message to chat history
-                st.session_state.chat_history.append({'content': session_state.user_input, 'is_user': True})
+                st.session_state.chat_history.append({'content': submit_button, 'is_user': True})
 
                 # Add bot response to chat history
                 st.session_state.chat_history.append({'content': bot_response, 'is_user': False})
